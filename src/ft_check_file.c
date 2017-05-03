@@ -10,8 +10,45 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_fillit.h"
-#include "fillit.h"
+#include "../include/ft_fillit.h"
+
+t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
+{
+	t_tetri	*head;
+
+	head = list;
+	*connexions = 0;
+	while (head && head->c == c)
+	{
+		list = head->next;
+		while (list && list->c == c)
+		{
+			if (head->x == list->x && head->y == list->y - 1)
+				(*connexions)++;
+			if (head->x == list->x - 1 && head->y == list->y)
+				(*connexions)++;
+			list = list->next;
+		}
+		head = head->next;
+	}
+	return (head);
+}
+
+int		tetriminos_checker(char *str)
+{
+	t_tetri *list;
+	int		connexions;
+
+	list = tetriminos_list_maker(str, 'A');
+	connexions = 5;
+	while (list)
+	{
+		list = check_connexions(list, list->c, &connexions);
+		if (connexions <= 2)
+			return (0);
+	}
+	return (1);
+}
 
 int		check_new(char *str)
 {
@@ -83,19 +120,4 @@ int		check_file(char *str)
 		i++;
 	}
 	return (r);
-}
-
-int		main(int argc, char const **argv)
-{
-	char	buf[1024];
-	int		fd;
-	int		i;
-
-	fd = open(argv[1], O_RDONLY);
-	printf("fd = %d\n", fd);
-	i = read(fd, buf, 1024);
-	printf("buf : \n%s\n", buf);
-	i = input_checker(buf);
-	printf("FINAL RESULT : %d\n", i);
-	return (0);
 }
