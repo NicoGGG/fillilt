@@ -6,7 +6,7 @@
 /*   By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/11 15:01:42 by nguelfi           #+#    #+#             */
-/*   Updated: 2017/04/24 18:46:17 by nguelfi          ###   ########.fr       */
+/*   Updated: 2017/05/02 17:12:35 by nguelfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void				ft_bzero(void *s, size_t n);
 void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t n);
-int					ft_strlen(const char *s);
+size_t				ft_strlen(const char *s);
 char				*ft_strdup(const char *s1);
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strncpy(char *dst, const char *src, size_t len);
@@ -81,5 +81,13 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
+
+int					ft_factorial(int nb);
+int					ft_power(int nb, int p);
+void				ft_swap_int(int *a, int *b);
+void				ft_sort_int_table(int *tab, size_t size);
+int					ft_lstnum(t_list *list);
+void				ft_lstadd_back(t_list **alst, void const *content,\
+		size_t content_size);
 
 #endif
