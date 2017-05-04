@@ -63,20 +63,16 @@ int		check_new(char *str)
 	i = 0;
 	while (str[i])
 	{
-		printf("test\n");
 		if (ch % 4 || ch == 0)
 		{
-			printf("test mod 4\n");
 			if (!valid_tile(str[i]))
 			{
-				printf("ERROR 0");
 				return (0);
 			}
 			i++;
 		}
 		if (ch % 16 == 0 && ch != 0 && str[i + 1])
 		{
-			printf("test mod 16\n");
 			if (str[i] != '\n' && str[i + 1] != '\n')
 			{
 				return (0);

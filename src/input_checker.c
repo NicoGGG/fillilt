@@ -29,6 +29,8 @@ int		square_checker(char *input)
 		if (*input && new_line % 4 == 0 && *input++ != '\n')
 			return (0);
 	}
+	if (*(input - 2) == 10)
+		return (0);
 	return (1);
 }
 
@@ -63,10 +65,12 @@ int		tetriminos_checker(char *input)
 	list = tetriminos_list_maker(input, 'A');
 	head = list;
 	connexions = 5;
+	if (!(list))
+		return (0);
 	while (list)
 	{
 		list = check_connexions(list, list->c, &connexions);
-		if (connexions <= 2)
+		if (connexions <= 2 || connexions > 4)
 			return (0);
 	}
 	return (1);
