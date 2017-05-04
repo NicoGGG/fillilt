@@ -1,4 +1,4 @@
-#include "../include/ft_fillit.h"
+#include "ft_fillit.h"
 
 int		main(int argc, char const **argv)
 {

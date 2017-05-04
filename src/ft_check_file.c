@@ -6,11 +6,11 @@
 /*   By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 17:31:32 by nguelfi           #+#    #+#             */
-/*   Updated: 2017/05/03 19:01:35 by nguelfi          ###   ########.fr       */
+/*   Updated: 2017/05/04 12:37:17 by nguelfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_fillit.h"
+#include "ft_fillit.h"
 
 t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
 {

@@ -1,4 +1,4 @@
-#include "../include/ft_fillit.h"
+#include "ft_fillit.h"
 
 void	tet_lstadd_back(t_tetri **alst, char c, int x, int y)
 {
