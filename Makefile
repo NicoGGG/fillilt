@@ -6,7 +6,7 @@
 #    By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/04 12:33:13 by nguelfi           #+#    #+#              #
-#    Updated: 2017/05/04 14:04:59 by nguelfi          ###   ########.fr        #
+#    Updated: 2017/05/04 14:51:21 by nguelfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRC_DIR = ./src
 INCLUDE = ./include
 OBJ_DIR = ./obj
 
-SRC = ft_make_list.c ft_check_file.c main.c
+SRC = ft_make_list.c ft_check_file.c ft_solver.c main.c
 BIN = ${SRC:%.c=%.o}
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 

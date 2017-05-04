@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_make_list.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/04 15:01:43 by nguelfi           #+#    #+#             */
+/*   Updated: 2017/05/04 15:02:51 by nguelfi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_fillit.h"
 
 void	tet_lstadd_back(t_tetri **alst, char c, int x, int y)
@@ -48,4 +60,23 @@ t_tetri	*tetriminos_list_maker(char *input, char c)
 		input++;
 	}
 	return (tet_lst);
+}
+
+char	**field_maker(int side)
+{
+	char	**field;
+	char	**start;
+	int		i;
+
+	field = (char**)malloc(sizeof(*field) * (side + 1));
+	field[side] = NULL;
+	start = field;
+	i = side;
+	while (i--)
+	{
+		*field = ft_strnew(side);
+		*field = ft_memset(*field, '.', side);
+		field++;
+	}
+	return (start);
 }

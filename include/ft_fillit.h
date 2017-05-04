@@ -35,5 +35,7 @@ int		intput_checker(char *input);
 int		tetriminos_checker(char *str);
 t_tetri	*check_connexions(t_tetri *list, char c, int *connexions);
 t_tetri	*tetriminos_list_maker(char *input, char c);
+char	**field_maker(int side);
+int		ft_fill_field(int *coords, t_tetri *t, char **field);
 
 #endif
