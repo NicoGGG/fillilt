@@ -6,9 +6,11 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:21:37 by dengstra          #+#    #+#             */
-/*   Updated: 2017/05/04 14:49:48 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/04 14:51:54 by nguelfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_fillit.h"
 
 int		main(int argc, char *argv[])
 {
@@ -36,6 +38,7 @@ int		main(int argc, char *argv[])
 	coords[1] = 0;
 	while (!ft_fill_field(coords, t, field))
 	{
+		printf("TEST\n");
 		coords[0] = 0;
 		coords[1] = 0;
 		field = field_maker(++size);
