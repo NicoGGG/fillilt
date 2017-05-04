@@ -12,12 +12,9 @@
 
 #ifndef FT_FILLIT_H
 # define FT_FILLIT_H
-# include "../lib/libft.h"
-# include <stdio.h>
+# include      <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
-# include <sys/stat.h>
-# include <sys/types.h>
 # include <stdlib.h>
 
 typedef struct	s_tetri
@@ -32,6 +29,7 @@ int		check_tetr(char **tab);
 int		check_file(char *str);
 int		check_new(char *str);
 int		intput_checker(char *input);
+int		square_checker(char *input);
 int		tetriminos_checker(char *str);
 t_tetri	*check_connexions(t_tetri *list, char c, int *connexions);
 t_tetri	*tetriminos_list_maker(char *input, char c);

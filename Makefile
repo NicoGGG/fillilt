@@ -6,7 +6,7 @@
 #    By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/04 12:33:13 by nguelfi           #+#    #+#              #
-#    Updated: 2017/05/04 14:51:21 by nguelfi          ###   ########.fr        #
+#    Updated: 2017/05/04 16:35:27 by nguelfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,11 @@ SRC_DIR = ./src
 INCLUDE = ./include
 OBJ_DIR = ./obj
 
-SRC = ft_make_list.c ft_check_file.c ft_solver.c main.c
+SRC = input_checker.c ft_solver.c field_maker.c main.c 
 BIN = ${SRC:%.c=%.o}
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-CFLAGS = -Wall -Werror -Wextra --std=c99
-OFLAGS = -pipe -flto
-CFLAGS += $(OFLAGS)
+CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = $(LIB_DIR)/libft.a
 
@@ -35,7 +33,7 @@ $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	gcc $(CFLAGS) -I $(LIB_DIR) -I $(INCLUDE) -o $@ -c $<
 
 $(NAME): $(OBJ)
-	gcc $(OFLAGS) $(OBJ) -L $(LIB_DIR) -l ft -o $(NAME)
+	gcc $(CFLAGS) $(OBJ) -L $(LIB_DIR) -l ft -o $(NAME)
 
 clean:
 	@$(MAKE) clean -C $(LIB_DIR)

@@ -6,7 +6,7 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:44:25 by dengstra          #+#    #+#             */
-/*   Updated: 2017/05/04 14:51:41 by nguelfi          ###   ########.fr       */
+/*   Updated: 2017/05/04 15:15:09 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ int		ft_fill_field(int *coords, t_tetri *t, char **field)
 	t = tmp;
 	if (!t)
 		success = 0;
-	if (!t && t->c == '$')
-		success = 1;
 	if (t && t->c != '$')
 		success = ft_fill_field(coords, t, field);
 	return (success);

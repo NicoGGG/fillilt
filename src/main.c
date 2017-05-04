@@ -6,7 +6,7 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:21:37 by dengstra          #+#    #+#             */
-/*   Updated: 2017/05/04 14:51:54 by nguelfi          ###   ########.fr       */
+/*   Updated: 2017/05/04 15:08:44 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,16 @@ int		main(int argc, char *argv[])
 		return (0);
 	coords[0] = 0;
 	coords[1] = 0;
+	if (!(square_checker(s) && tetriminos_checker(s)))
+	{
+		write(1, "error\n", 6);
+		return (0);
+	}
 	while (!ft_fill_field(coords, t, field))
 	{
-		printf("TEST\n");
 		coords[0] = 0;
 		coords[1] = 0;
+		free(field);
 		field = field_maker(++size);
 		if (!field)
 			return (0);
