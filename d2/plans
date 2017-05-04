@@ -1,0 +1,118 @@
+input:
+   "1...
+	1...
+	11..
+	....
+
+	....
+	....
+	..22
+	..22"
+
+data:
+	into 2-dim array, 9 = .
+	array = { { a = { A, 3, 991 } }
+			  { b = { B, 2, 2   } }
+			}
+	
+algo:
+	char	*input; 
+	int		**terminos;
+	char	**field;
+	int		index[2];
+
+	convert input to terminos;
+	field = create_field(num_terminos * 2)
+	index[0] = 0;
+	index[1] = 0;
+	while (0 == recursion(index, terminos, &field))
+		field = create_field(size_side++);
+	return (field);
+		
+		
+functions:
+	char **create_field(size_side)
+		create 2-dim array with side size_side
+		fill with '.'
+		add a '\0' at the end
+
+
+
+	t_tetri *place_tetriminos(int coords[], 
+						char **field, t_tetri *t, t_tetri *head)
+	{
+		int		x;
+		int		y;
+		t_tetri	done;
+
+		if (!t)
+		{
+			done = (t_tetri*)malloc(sizeof(t_tetri));
+			done->c = '$';
+			return (done);
+		}
+		if (t->c != head->c)
+			return (t);
+		x = t->x - head->x;
+		y = t->y - head->y;
+		if (field[coords[1] + y][coords[0] + x] == '.')
+		{
+			if ((t = place_terminos(coords, field, t->next, head)))
+			{
+				field[coords[1] + y][coords[0] + x] = '#';
+				return (t);
+			}
+		}
+		return (NULL);
+	}
+		
+
+
+	int recursion(int coords[], t_tetri t, char **field):
+		int success;
+		t_tetri		tmp;
+		int			coords[2];
+
+		if (!coords)
+		{
+			coords[0] = 0;
+			coords[1] = 0;
+		}
+		while (!(tmp = place_tetriminos(coords, field, t, head)))
+		{
+			coords[0]++;
+			coords[1]++;
+			if (field[coords[1] == NULL)
+				return (0);
+			if (field[coords[1]][coords[0]])
+			{
+				coords[1]++;
+				coords[0] = 0;
+			}
+		}
+		t = tmp;
+
+		if (!t)
+			success = 0;
+		if (!t && t->c == '$')
+			success = 1;
+		if (!t && t->c != '$')
+		{
+			success = recursion(coords, t, field);
+		}
+	return (success);
+
+
+		while (field[y][x] != '\0' &&
+			 0 == place_terminos(coords, t, field))
+		{
+			while (field[y][x] != '.' )
+				(y || x) + 1;
+		}
+		endcase_success = placed last terminos succesfully
+			success = 1;
+		endcase_fail = got to end of field with terminos left
+			success = 0;
+		if (neither endcase happend)
+			success = recursion(index++, terminos++, field);
+		return (success);
