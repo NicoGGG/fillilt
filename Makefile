@@ -6,7 +6,7 @@
 #    By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/05/04 12:33:13 by nguelfi           #+#    #+#              #
-#    Updated: 2017/05/04 13:27:16 by nguelfi          ###   ########.fr        #
+#    Updated: 2017/05/04 14:04:59 by nguelfi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,24 +17,25 @@ INCLUDE = ./include
 OBJ_DIR = ./obj
 
 SRC = ft_make_list.c ft_check_file.c main.c
-SRC_O = $(addprefix $(SRC_DIR)/,$(SRC))
 BIN = ${SRC:%.c=%.o}
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
-FLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra --std=c99
 OFLAGS = -pipe -flto
+CFLAGS += $(OFLAGS)
+
 LIBFT = $(LIB_DIR)/libft.a
 
 all:
+	mkdir -p $(OBJ_DIR)
 	@$(MAKE) -C $(LIB_DIR) --no-print-directory
 	@$(MAKE) $(NAME) --no-print-directory
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	gcc $(FLAGS) -I $(LIB_DIR) -I $(INCLUDE) -o $@ -c $<
+	gcc $(CFLAGS) -I $(LIB_DIR) -I $(INCLUDE) -o $@ -c $<
 
 $(NAME): $(OBJ)
-##	gcc $(FLAGS) -I $(LIB_DIR) -I $(INCLUDE) -o $@ -c @<
-	gcc $(FLAGS) $(OBJ) -L $(LIB_DIR) -lft -I $(INCLUDE) -o $(NAME)
+	gcc $(OFLAGS) $(OBJ) -L $(LIB_DIR) -l ft -o $(NAME)
 
 clean:
 	@$(MAKE) clean -C $(LIB_DIR)
@@ -46,4 +47,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re all $(NAME)
+.PHONY: clean fclean re all
