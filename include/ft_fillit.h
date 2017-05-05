@@ -6,7 +6,7 @@
 /*   By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 19:11:47 by nguelfi           #+#    #+#             */
-/*   Updated: 2017/05/03 19:11:56 by nguelfi          ###   ########.fr       */
+/*   Updated: 2017/05/05 17:17:20 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct	s_tetri
 
 int				intput_checker(char *input);
 int				square_checker(char *input);
-int				tetriminos_checker(char *str);
+int				tetriminos_checker(t_tetri *list);
 t_tetri			*check_connexions(t_tetri *list, char c, int *connexions);
 t_tetri			*tetriminos_list_maker(char *input, char c);
 char			**field_maker(int side);
