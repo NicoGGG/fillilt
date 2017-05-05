@@ -29,6 +29,8 @@ int		square_checker(char *input)
 		if (*input && new_line % 4 == 0 && *input++ != '\n')
 			return (0);
 	}
+	if (new_line % 4 != 0)
+		return (0);
 	if (*(input - 2) == 10)
 		return (0);
 	return (1);

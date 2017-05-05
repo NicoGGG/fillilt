@@ -19,7 +19,6 @@ int		main(int argc, char *argv[])
 	int		fd;
 	int		r;
 	char	**field;
-	int		*coords;
 	t_tetri	*t;
 
 	if (argc != 2)
@@ -31,20 +30,13 @@ int		main(int argc, char *argv[])
 	t = tetriminos_list_maker(s, 'A');
 	size = 1;
 	field = field_maker(size);
-	coords = (int*)malloc(2);
-	if (!coords || !field)
-		return (0);
-	coords[0] = 0;
-	coords[1] = 0;
 	if (!(square_checker(s) && tetriminos_checker(s)))
 	{
 		write(1, "error\n", 6);
 		return (0);
 	}
-	while (!ft_fill_field(coords, t, field))
+	while (!ft_fill_field(field, t, t))
 	{
-		coords[0] = 0;
-		coords[1] = 0;
 		free(field);
 		field = field_maker(++size);
 		if (!field)

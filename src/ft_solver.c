@@ -12,61 +12,78 @@
 
 #include "ft_fillit.h"
 
-t_tetri	*place_tetriminos(int coords[], char **field, t_tetri *t, t_tetri *head)
+int		place_tetriminos(int xy[], char **field, t_tetri *t, t_tetri *head)
 {
 	int		x;
 	int		y;
 
-	if (!t)
-	{
-		t = (t_tetri*)malloc(sizeof(t_tetri));
-		t->c = '$';
-		return (t);
-	}
-	if (t->c != head->c)
-		return (t);
+	if (!t || t->c != head->c)
+		return (1);
 	x = t->x - head->x;
 	y = t->y - head->y;
-	if (field[coords[1] + y] && field[coords[1] + y][coords[0] + x] == '.' && t)
+	if (field[xy[1] + y] && field[xy[1] + y][xy[0] + x] == '.' && t)
 	{
-		if ((t = place_tetriminos(coords, field, t->next, head)))
+		if (place_tetriminos(xy, field, t->next, head))
 		{
-			field[coords[1] + y][coords[0] + x] = head->c;
-			return (t);
+			field[xy[1] + y][xy[0] + x] = head->c;
+			return (1);
 		}
 	}
-	return (NULL);
+	return (0);
 }
 
-int		*coord_mover(int *c, char **field)
+int		*xy_mover(int *xy, char **field)
 {
-	c[0]++;
-	if (!field[c[1]])
+	if (!field[xy[1]])
 		return (NULL);
-	if (!field[c[1]][c[0]])
+	xy[0]++;
+	if (!field[xy[1]][xy[0]])
 	{
-		c[1]++;
-		c[0] = 0;
-		return (c);
+		xy[1]++;
+		xy[0] = 0;
+		return (xy);
 	}
-	return (c);
+	return (xy);
 }
 
-int		ft_fill_field(int *coords, t_tetri *t, char **field)
+void	cleaner(char **field, char c)
 {
-	int			success;
-	t_tetri		*tmp;
+	int x;
+	int y;
 
-	while (!(tmp = place_tetriminos(coords, field, t, t)))
+	y = 0;
+	while (field[y])
 	{
-		coords = coord_mover(coords, field);
-		if (!coords)
-			return (0);
+		x = 0;
+		while (field[y][x])
+		{
+			if (field[y][x] == c)
+				field[y][x] = '.';
+			x++;
+		}
+		y++;
 	}
-	t = tmp;
+}
+
+int		ft_fill_field(char **field, t_tetri *t, t_tetri *h)
+{
+	int *xy;
+
 	if (!t)
-		success = 0;
-	if (t && t->c != '$')
-		success = ft_fill_field(coords, t, field);
-	return (success);
+		return (1);
+	xy = (int*)malloc(sizeof(int) * 4);
+	xy[0] = 0;
+	xy[1] = 0;
+	while (xy)
+	{
+		if (place_tetriminos(xy, field, t, t))
+		{
+			if (ft_fill_field(field, t->next->next->next->next, h))
+				return (1);
+			else
+				cleaner(field, t->c);
+		}
+		xy = xy_mover(xy, field);
+	}
+	return (0);
 }
