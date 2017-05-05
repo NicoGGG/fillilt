@@ -24,8 +24,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = $(LIB_DIR)/libft.a
 
-all:
-	
+all:	
 	@$(MAKE) -C $(LIB_DIR) --no-print-directory
 	@$(MAKE) $(NAME) --no-print-directory
 
