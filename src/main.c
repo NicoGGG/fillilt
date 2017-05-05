@@ -11,22 +11,44 @@
 /* ************************************************************************** */
 
 #include "ft_fillit.h"
+#include "libft.h"
+
+void	print_field(char **field)
+{
+	int i;
+
+	i = 0;
+	while (field[i])
+	{
+		ft_putendl(field[i]);
+		i++;
+	}
+}
+
+char	*ft_read(char *arg)
+{
+	int		fd;
+	int		r;
+	char	*s;
+
+	if ((s = malloc(sizeof(char) * 600)) == NULL)
+		return (NULL);
+	fd = open(arg, O_RDONLY);
+	r = read(fd, s, 600);
+	s[r] = 0;
+	return (s);
+}
 
 int		main(int argc, char *argv[])
 {
 	int		size;
 	char	*s;
-	int		fd;
-	int		r;
 	char	**field;
 	t_tetri	*t;
 
 	if (argc != 2)
 		return (0);
-	s = malloc(1000);
-	fd = open(argv[1], O_RDONLY);
-	r = read(fd, s, 900);
-	s[r] = '\0';
+	s = ft_read(argv[1]);
 	t = tetriminos_list_maker(s, 'A');
 	size = 1;
 	field = field_maker(size);
@@ -42,7 +64,6 @@ int		main(int argc, char *argv[])
 		if (!field)
 			return (0);
 	}
-	while (*field)
-		printf("%s\n", *field++);
+	print_field(field);
 	return (0);
 }

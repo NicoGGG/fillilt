@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   field_maker.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/05 14:26:35 by nguelfi           #+#    #+#             */
+/*   Updated: 2017/05/05 14:27:17 by nguelfi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_fillit.h"
 #include "libft.h"
 
@@ -5,7 +17,7 @@ char	**field_maker(int side)
 {
 	char	**field;
 	char	**start;
-	int	i;
+	int		i;
 
 	field = (char**)malloc(sizeof(*field) * (side + 1));
 	field[side] = NULL;
@@ -47,14 +59,13 @@ t_tetri	*tetriminos_list_maker(char *input, char c)
 	int		x;
 	int		y;
 
-	x = y = 0;
+	x = 0;
+	y = 0;
 	tet_lst = NULL;
 	while (*input)
 	{
 		if (*input == '#')
-		{
 			tet_lstadd_back(&tet_lst, c, x, y);
-		}
 		if (*input == '\n')
 			y++;
 		else

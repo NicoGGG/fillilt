@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   input_checker.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/05/05 14:25:47 by nguelfi           #+#    #+#             */
+/*   Updated: 2017/05/05 14:25:49 by nguelfi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_fillit.h"
 
 int		valid_tile(char c)
@@ -36,7 +48,7 @@ int		square_checker(char *input)
 	return (1);
 }
 
-t_tetri		*check_connexions(t_tetri *list, char c, int *connexions)
+t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
 {
 	t_tetri	*head;
 
