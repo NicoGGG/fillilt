@@ -39,6 +39,17 @@ char	*ft_read(char *arg)
 	return (s);
 }
 
+void	free_field(char **field)
+{
+	int	i;
+
+	i = 0;
+	while (field[i])
+		free(field[i++]);
+	free(field);
+	field = NULL;
+}
+
 int		main(int argc, char *argv[])
 {
 	int		size;
@@ -52,14 +63,14 @@ int		main(int argc, char *argv[])
 	t = tetriminos_list_maker(s, 'A');
 	size = 1;
 	field = field_maker(size);
-	if (!(square_checker(s) && tetriminos_checker(s)))
+	if (!(square_checker(s) && tetriminos_checker(t)))
 	{
 		write(1, "error\n", 6);
 		return (0);
 	}
 	while (!ft_fill_field(field, t, t))
 	{
-		free(field);
+		free_field(field);
 		field = field_maker(++size);
 		if (!field)
 			return (0);

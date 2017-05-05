@@ -70,13 +70,11 @@ t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
 	return (head);
 }
 
-int		tetriminos_checker(char *input)
+int		tetriminos_checker(t_tetri *list)
 {
-	t_tetri *list;
 	t_tetri *head;
 	int		connexions;
 
-	list = tetriminos_list_maker(input, 'A');
 	head = list;
 	connexions = 5;
 	if (!(list))

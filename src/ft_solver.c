@@ -21,7 +21,9 @@ int		place_tetriminos(int xy[], char **field, t_tetri *t, t_tetri *head)
 		return (1);
 	x = t->x - head->x;
 	y = t->y - head->y;
-	if (field[xy[1] + y] && field[xy[1] + y][xy[0] + x] == '.' && t)
+	if (xy[0] + x < 0)
+		return (0);
+	if (field[xy[1] + y] && field[xy[1] + y][xy[0] + x] == '.')
 	{
 		if (place_tetriminos(xy, field, t->next, head))
 		{
@@ -79,11 +81,15 @@ int		ft_fill_field(char **field, t_tetri *t, t_tetri *h)
 		if (place_tetriminos(xy, field, t, t))
 		{
 			if (ft_fill_field(field, t->next->next->next->next, h))
+			{
+				free(xy);
 				return (1);
+			}
 			else
 				cleaner(field, t->c);
 		}
 		xy = xy_mover(xy, field);
 	}
+	free(xy);
 	return (0);
 }
