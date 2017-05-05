@@ -72,10 +72,8 @@ t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
 
 int		tetriminos_checker(t_tetri *list)
 {
-	t_tetri *head;
 	int		connexions;
 
-	head = list;
 	connexions = 5;
 	if (!(list))
 		return (0);
