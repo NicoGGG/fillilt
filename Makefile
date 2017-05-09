@@ -24,9 +24,10 @@ CFLAGS = -Wall -Werror -Wextra
 
 LIBFT = $(LIB_DIR)/libft.a
 
-all:	
+all: $(LIBFT) $(NAME)
+
+$(LIBFT):
 	@$(MAKE) -C $(LIB_DIR) --no-print-directory
-	@$(MAKE) $(NAME) --no-print-directory
 
 $(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
 	mkdir -p $(OBJ_DIR)
