@@ -6,13 +6,13 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:44:25 by dengstra          #+#    #+#             */
-/*   Updated: 2017/05/04 15:15:09 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:15:30 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fillit.h"
 
-int		place_tetriminos(int xy[], char **field, t_tetri *t, t_tetri *head)
+static int	place_tetriminos(int xy[], char **field, t_tetri *t, t_tetri *head)
 {
 	int		x;
 	int		y;
@@ -34,7 +34,7 @@ int		place_tetriminos(int xy[], char **field, t_tetri *t, t_tetri *head)
 	return (0);
 }
 
-int		*xy_mover(int *xy, char **field)
+static int	*xy_mover(int *xy, char **field)
 {
 	if (!field[xy[1]])
 		return (NULL);
@@ -48,7 +48,7 @@ int		*xy_mover(int *xy, char **field)
 	return (xy);
 }
 
-void	cleaner(char **field, char c)
+static void	cleaner(char **field, char c)
 {
 	int x;
 	int y;
@@ -67,7 +67,7 @@ void	cleaner(char **field, char c)
 	}
 }
 
-int		ft_fill_field(char **field, t_tetri *t, t_tetri *h)
+int			ft_fill_field(char **field, t_tetri *t, t_tetri *h)
 {
 	int *xy;
 

@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   input_checker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 14:25:47 by nguelfi           #+#    #+#             */
-/*   Updated: 2017/05/05 14:25:49 by nguelfi          ###   ########.fr       */
+/*   Updated: 2017/05/09 14:17:03 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fillit.h"
 
-int		valid_tile(char c)
+static int		valid_tile(char c)
 {
 	if (!c)
 		return (0);
 	return (c == '#' || c == '.');
 }
 
-int		square_checker(char *input)
+int				square_checker(char *input)
 {
 	int		new_line;
 	int		tile;
@@ -48,7 +48,7 @@ int		square_checker(char *input)
 	return (1);
 }
 
-t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
+static t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
 {
 	t_tetri	*head;
 
@@ -70,7 +70,7 @@ t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
 	return (head);
 }
 
-int		tetriminos_checker(t_tetri *list)
+int				tetriminos_checker(t_tetri *list)
 {
 	int		connexions;
 

@@ -6,14 +6,14 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:21:37 by dengstra          #+#    #+#             */
-/*   Updated: 2017/05/04 15:08:44 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/09 14:16:42 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fillit.h"
 #include "libft.h"
 
-void	print_field(char **field)
+static void	print_field(char **field)
 {
 	int i;
 
@@ -25,7 +25,7 @@ void	print_field(char **field)
 	}
 }
 
-char	*ft_read(char *arg)
+static char	*ft_read(char *arg)
 {
 	int		fd;
 	int		r;
@@ -39,7 +39,7 @@ char	*ft_read(char *arg)
 	return (s);
 }
 
-void	free_field(char **field)
+static void	free_field(char **field)
 {
 	int	i;
 
@@ -50,7 +50,7 @@ void	free_field(char **field)
 	field = NULL;
 }
 
-int		main(int argc, char *argv[])
+int			main(int argc, char *argv[])
 {
 	int		size;
 	char	*s;

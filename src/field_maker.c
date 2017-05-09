@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   field_maker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nguelfi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 14:26:35 by nguelfi           #+#    #+#             */
-/*   Updated: 2017/05/05 14:27:17 by nguelfi          ###   ########.fr       */
+/*   Updated: 2017/05/09 14:16:26 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fillit.h"
 #include "libft.h"
 
-char	**field_maker(int side)
+char		**field_maker(int side)
 {
 	char	**field;
 	char	**start;
@@ -32,7 +32,7 @@ char	**field_maker(int side)
 	return (start);
 }
 
-void	tet_lstadd_back(t_tetri **alst, char c, int x, int y)
+static void	tet_lstadd_back(t_tetri **alst, char c, int x, int y)
 {
 	t_tetri *new;
 	t_tetri *tmp;
@@ -53,7 +53,7 @@ void	tet_lstadd_back(t_tetri **alst, char c, int x, int y)
 	}
 }
 
-t_tetri	*tetriminos_list_maker(char *input, char c)
+t_tetri		*tetriminos_list_maker(char *input, char c)
 {
 	t_tetri	*tet_lst;
 	int		x;
