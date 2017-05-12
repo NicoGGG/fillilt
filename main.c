@@ -6,7 +6,7 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:21:37 by dengstra          #+#    #+#             */
-/*   Updated: 2017/05/09 14:16:42 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/12 16:04:15 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,11 @@ static char	*ft_read(char *arg)
 	if ((s = malloc(sizeof(char) * 600)) == NULL)
 		return (NULL);
 	fd = open(arg, O_RDONLY);
+	if (fd < 0)
+		return (NULL);
 	r = read(fd, s, 600);
+	if (r < 0)
+		return (NULL);
 	s[r] = 0;
 	return (s);
 }
@@ -47,7 +51,6 @@ static void	free_field(char **field)
 	while (field[i])
 		free(field[i++]);
 	free(field);
-	field = NULL;
 }
 
 int			main(int argc, char *argv[])
@@ -58,15 +61,15 @@ int			main(int argc, char *argv[])
 	t_tetri	*t;
 
 	if (argc != 2)
-		return (0);
+		return (1);
 	s = ft_read(argv[1]);
-	t = tetriminos_list_maker(s, 'A');
+	t = (s) ? tetriminos_list_maker(s, 'A') : NULL;
 	size = 1;
 	field = field_maker(size);
-	if (!(square_checker(s) && tetriminos_checker(t)))
+	if (!field || !t || (!(square_checker(s) && tetriminos_checker(t))))
 	{
 		write(1, "error\n", 6);
-		return (0);
+		return (1);
 	}
 	while (!ft_fill_field(field, t, t))
 	{

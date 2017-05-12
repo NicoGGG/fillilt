@@ -6,7 +6,7 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 14:26:35 by nguelfi           #+#    #+#             */
-/*   Updated: 2017/05/09 14:16:26 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/12 15:38:03 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char		**field_maker(int side)
 	int		i;
 
 	field = (char**)malloc(sizeof(*field) * (side + 1));
+	if (!field)
+		return (NULL);
 	field[side] = NULL;
 	start = field;
 	i = side;
@@ -38,6 +40,8 @@ static void	tet_lstadd_back(t_tetri **alst, char c, int x, int y)
 	t_tetri *tmp;
 
 	new = (t_tetri*)malloc(sizeof(t_tetri));
+	if (!new)
+		return ;
 	new->c = c;
 	new->x = x;
 	new->y = y;

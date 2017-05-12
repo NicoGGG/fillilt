@@ -6,7 +6,7 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:44:25 by dengstra          #+#    #+#             */
-/*   Updated: 2017/05/09 14:15:30 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/12 16:01:22 by dengstra         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ int			ft_fill_field(char **field, t_tetri *t, t_tetri *h)
 
 	if (!t)
 		return (1);
-	xy = (int*)malloc(sizeof(int) * 4);
+	if (!(xy = (int*)malloc(sizeof(int) * 4)))
+		exit(1);
 	xy[0] = 0;
 	xy[1] = 0;
 	while (xy)
