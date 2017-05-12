@@ -6,7 +6,7 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 14:21:37 by dengstra          #+#    #+#             */
-/*   Updated: 2017/05/12 16:04:15 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/12 21:26:19 by nguelfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,12 @@ static void	free_field(char **field)
 	free(field);
 }
 
+int			print_usage(void)
+{
+	write(1, "usage: fillit file\n", 19);
+	return (1);
+}
+
 int			main(int argc, char *argv[])
 {
 	int		size;
@@ -61,16 +67,13 @@ int			main(int argc, char *argv[])
 	t_tetri	*t;
 
 	if (argc != 2)
-		return (1);
+		return (print_usage());
 	s = ft_read(argv[1]);
 	t = (s) ? tetriminos_list_maker(s, 'A') : NULL;
 	size = 1;
 	field = field_maker(size);
 	if (!field || !t || (!(square_checker(s) && tetriminos_checker(t))))
-	{
-		write(1, "error\n", 6);
-		return (1);
-	}
+		return (7 - write(1, "error\n", 6));
 	while (!ft_fill_field(field, t, t))
 	{
 		free_field(field);

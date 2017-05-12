@@ -6,7 +6,7 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/03 19:11:47 by nguelfi           #+#    #+#             */
-/*   Updated: 2017/05/09 14:14:34 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/12 21:10:13 by nguelfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include "libft/libft.h"
 
 typedef struct	s_tetri
 {

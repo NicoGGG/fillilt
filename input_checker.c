@@ -6,7 +6,7 @@
 /*   By: dengstra <dengstra@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/05 14:25:47 by nguelfi           #+#    #+#             */
-/*   Updated: 2017/05/09 14:17:03 by dengstra         ###   ########.fr       */
+/*   Updated: 2017/05/12 21:22:49 by nguelfi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,35 @@ static t_tetri	*check_connexions(t_tetri *list, char c, int *connexions)
 	return (head);
 }
 
+int				check_count(t_tetri *list)
+{
+	char	c;
+	int		count;
+
+	c = 'A';
+	while (list)
+	{
+		count = 0;
+		while (list && list->c == c)
+		{
+			count++;
+			list = list->next;
+		}
+		if (count != 4)
+			return (0);
+		c++;
+	}
+	return (1);
+}
+
 int				tetriminos_checker(t_tetri *list)
 {
 	int		connexions;
 
 	connexions = 5;
 	if (!(list))
+		return (0);
+	if (!(check_count(list)))
 		return (0);
 	while (list)
 	{
